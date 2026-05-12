@@ -6,7 +6,7 @@ while True:
     opcion = input("Elija la opcion que desea ingresar: ")
     match opcion:
         case "1":
-            pass
+            agregar_pais(paises)
         case "2":
             pass
         case "3":
