@@ -8,7 +8,7 @@ while True:
         case "1":
             agregar_pais(paises)
         case "2":
-            pass
+            modificar_datos(paises)
         case "3":
             pass
         case "4":
