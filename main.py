@@ -1,8 +1,5 @@
-from fcn import*
-from Funciones.buscar_pais import *
-from Funciones.ordenar_paises import *
+from Funciones.__fcn__ import *
 paises = cargar_archivo()
-
 while True:
     menu()
     opcion = input("Elija la opcion que desea ingresar: ")

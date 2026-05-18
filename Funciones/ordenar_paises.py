@@ -32,10 +32,10 @@ def caso_1(lista):
                 az = 'Z-A'
                 volt = True
             try:
-                print(f'\n{'Paises':<12}{az} | {'Poblacion':<15} | {'Superficie':<12} | {'Continentes':<6}')
+                print(f'\n{'Paises':<29}{az} | {'Poblacion':<15} | {'Superficie':<12} | {'Continentes':<6}')
                 print('-'*80)
                 for x in sorted(usar, reverse = volt):
-                    print(f"{x[0]:<15} | {x[1]:<15} | {x[2]:<12} | {x[3]:<6}")
+                    print(f"{x[0]:<32} | {x[1]:<15} | {x[2]:<12} | {x[3]:<6}")
             except UnboundLocalError:
                 print('\n Saliendo al menu principal \n')
 

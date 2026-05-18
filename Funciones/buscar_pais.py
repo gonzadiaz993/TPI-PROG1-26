@@ -1,5 +1,4 @@
 import csv
-from fcn import *
 PAISES = 'paises.csv'
 
 def buscar_pais(lista):
