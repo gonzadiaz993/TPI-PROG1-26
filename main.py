@@ -1,4 +1,6 @@
 from fcn import*
+from Funciones.buscar_pais import *
+from Funciones.ordenar_paises import *
 paises = cargar_archivo()
 
 while True:
@@ -10,11 +12,11 @@ while True:
         case "2":
             modificar_datos(paises)
         case "3":
-            pass
+            buscar_pais(paises)
         case "4":
             pass
         case "5":
-            pass
+            ordenar_paises(paises)
         case "6":
             pass
         case "7":
