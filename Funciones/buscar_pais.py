@@ -19,13 +19,8 @@ def buscar_pais(lista):
             if not encontrado:
                 print(f'El pais "{pais_buscar}" no se ha encontrado en la lista')
                 print('\n ¿Quire agregarlo a la lista?')
-                opc = input('[S] Si  /  [N] No : ').upper().strip()
-                while True:
-                    if opc == 'S':
-                        agregar_pais(lista)
-                        break
-                    elif opc == 'N':
-                        print('Volvinedo al menu principal')
-                        break
-                    else:
-                        print('No es una opcion valida')
+                opc = input(' Si [S] /// No [Otro] : ').upper().strip()
+                if opc == 'S':
+                    agregar_pais(lista)
+                else:
+                    print('\nSaliendo al menu principal\n')
