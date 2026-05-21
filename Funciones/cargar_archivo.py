@@ -4,7 +4,6 @@ def cargar_archivo():
     try:
         with open('paises.csv', 'r', encoding='utf-8') as archivo:
             lector = csv.DictReader(archivo)
-            
             for fila in lector:
                 paises.append({
                     'nombre': fila['nombre'],

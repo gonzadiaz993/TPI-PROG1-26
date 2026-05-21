@@ -6,3 +6,4 @@ from Funciones.agregar_pais import *
 from Funciones.guardar_archivo import *
 from Funciones.modificar_datos import *
 from Funciones.filtar_pais import *
+from Funciones.estadisticas import *

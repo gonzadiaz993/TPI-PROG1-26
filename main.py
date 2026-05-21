@@ -15,7 +15,7 @@ while True:
         case "5":
             ordenar_paises(paises)
         case "6":
-            pass
+            estadisticas(paises)
         case "7":
             print("Fin del programa. Hasta luego.")
             break
