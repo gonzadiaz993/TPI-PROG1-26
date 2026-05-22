@@ -1,6 +1,5 @@
-from fcn import*
+from Funciones.__fcn__ import *
 paises = cargar_archivo()
-
 while True:
     menu()
     opcion = input("Elija la opcion que desea ingresar: ")
@@ -10,13 +9,13 @@ while True:
         case "2":
             modificar_datos(paises)
         case "3":
-            pass
+            buscar_pais(paises)
         case "4":
             filtrar_paises(paises)
         case "5":
-            pass
+            ordenar_paises(paises)
         case "6":
-            pass
+            estadisticas(paises)
         case "7":
             print("Fin del programa. Hasta luego.")
             break
