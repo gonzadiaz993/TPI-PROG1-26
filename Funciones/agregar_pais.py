@@ -1,9 +1,11 @@
 import csv
+from Funciones.excepciones import *
 from Funciones.guardar_archivo import *
 def agregar_pais(paises):
-    if paises is None:
-        paises = []
-        print("No hay países cargados en la lista.")
+    try:
+        lista_vacia(paises)
+    except ListaVacia as e:
+        print(f'Error. {e}')
     while True:
         print("\n--- Agregar Nuevo País (Escriba 'salir' en nombre para terminar) ---")
         try:
