@@ -8,12 +8,4 @@ from Funciones.modificar_datos import *
 from Funciones.filtar_pais import *
 from Funciones.estadisticas import *
 from Funciones.excepciones import *
-import questionary
-from questionary import Style
-import os
-import msvcrt
-def limpiar_cosola():
-    os.system('cls' if os.name=='nt' else 'clear')
-def on_press():
-    print('Presione cualquier tecla para continuar')
-    msvcrt.getch()
+from Funciones.en_consola import *

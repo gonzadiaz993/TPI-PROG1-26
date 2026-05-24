@@ -1,15 +1,16 @@
 from Funciones.__fcn__ import *
-
 paises = cargar_archivo()
 while True:
-    limpiar_cosola()
+    limpiar_consola()
     estilo = Style([
         ('instruction','hidden'),
-        ('qmark','hidden')
+        ('qmark','hidden'),
+        ('highlighted','fg:yellow'),
+        ('pointer','fg:yellow bold')
     ])
     opcion = questionary.select(
     
-    message='============== MENU ================',
+    message='============== MENU ================\n',
     choices=['1. Agregar país', '2. Actualizar datos', '3. Buscar pais por nombre', '4. Filtrar paises', '5. Ordenar paises', '6. Mostrar estadisticas', '7. Salir'],
     style = estilo
 ).ask()
@@ -24,12 +25,10 @@ while True:
             filtrar_paises(paises)
         case '5. Ordenar paises':
             ordenar_paises(paises)
-            print()
-            on_press()
         case '6. Mostrar estadisticas':
             estadisticas(paises)
         case '7. Salir':
-            limpiar_cosola()
+            limpiar_consola()
             print("Fin del programa. Hasta luego.")
-            on_press()
+            press_continuar()
             break
