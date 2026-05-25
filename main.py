@@ -5,14 +5,22 @@ while True:
     estilo = Style([
         ('instruction','hidden'),
         ('qmark','hidden'),
-        ('highlighted','fg:yellow'),
-        ('pointer','fg:yellow bold')
+        ('highlighted','bg:green fg:black'),
+        ('pointer','fg:green bold')
     ])
+    '''
+    ('qmark', 'fg:#00ff00'),
+    ('question', 'fg:#00ff00 bold'),
+    # 'bg:#00ff00' crea el bloque verde, 'fg:#000000' hace la letra negra para que contraste
+    ('highlighted', 'bg:#00ff00 fg:#000000 bold'), 
+    ('pointer', 'fg:#00ff00 blink'),     # Puntero verde (algunas terminales soportan el parpadeo 'blink')
+    ('answer', 'fg:#00ff00 underline'),'''
     opcion = questionary.select(
     
     message='============== MENU ================\n',
-    choices=['1. Agregar país', '2. Actualizar datos', '3. Buscar pais por nombre', '4. Filtrar paises', '5. Ordenar paises', '6. Mostrar estadisticas', '7. Salir'],
-    style = estilo
+    choices=['1. Agregar país ', '2. Actualizar datos ', '3. Buscar pais por nombre ', '4. Filtrar paises ', '5. Ordenar paises ', '6. Mostrar estadisticas ', '7. Salir '],
+    style = estilo,
+    pointer = '▶'
 ).ask()
     match opcion:
         case '1. Agregar país':
