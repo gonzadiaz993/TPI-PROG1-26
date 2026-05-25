@@ -1,8 +1,3 @@
-class NombreYaExiste(Exception):
-    pass
-def nombre_existe(lista,nombre):
-    pass
-
 class ListaVacia(Exception):
     pass
 def lista_vacia(lista):
@@ -11,4 +6,9 @@ def lista_vacia(lista):
     else:
         return lista
 
-
+class DatoRepetido(Exception):
+    pass
+def esta_repetido(lista,dato):
+    existe = any(isinstance(p, dict) and p.get('nombre') == dato for p in lista)
+    if existe:
+        raise DatoRepetido(f'El pais {dato} ya existe')

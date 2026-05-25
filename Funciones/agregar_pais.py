@@ -1,33 +1,26 @@
 import csv
 from Funciones.excepciones import *
 from Funciones.guardar_archivo import *
+from Funciones.en_consola import *
 def agregar_pais(paises):
     try:
         lista_vacia(paises)
     except ListaVacia as e:
         print(f'Error. {e}')
     while True:
-        print("\n--- Agregar Nuevo País (Escriba 'salir' en nombre para terminar) ---")
+        print(f'\n--- Agregar Nuevo País (Escriba {Fore.RED}salir{Fore.RESET} en nombre para terminar) ---')
         try:
             nombre = ""
             while not nombre:
-                entrada = input("Ingrese el nombre del país: ").strip()
-                
-                if entrada.lower() == 'salir':
-                    return paises
-                
-                nombre_pais = entrada.capitalize()
-                
-                # Verificamos si el nombre ya existe en la lista de diccionarios
-                existe = any(isinstance(p, dict) and p.get('nombre') == nombre_pais for p in paises)
-                
-                if existe:
-                    print(f"El país '{nombre_pais}' ya se encuentra en la lista.")
-                    continue
-                    
-                
-                nombre = nombre_pais
-
+                try:
+                    entrada = input("Ingrese el nombre del país: ").strip()
+                    if entrada.lower() == 'salir':
+                        return paises
+                    nombre_pais = entrada.capitalize()
+                    esta_repetido(paises,nombre_pais)
+                    nombre = nombre_pais
+                except DatoRepetido as e:
+                    print(f'Error. {e}')
             poblacion = -1
             while poblacion < 0:
                 poblacion = int(input(f"Ingrese la población de {nombre}: "))
@@ -45,7 +38,6 @@ def agregar_pais(paises):
                 continente = input(f"Ingrese el continente de {nombre}: ").strip().capitalize()
                 if not continente:
                     print("El continente no puede estar vacío.")
-
             nuevo_pais = {
                 "nombre": nombre,
                 "poblacion": poblacion,

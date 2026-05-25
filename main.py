@@ -10,8 +10,7 @@ while True:
         ('question','fg:green bold')
     ])
     opcion = questionary.select(
-    
-    message='============== MENU ================\n',
+    message='>>>>>>>> MENU <<<<<<<<\n',
     choices=['1. Agregar país ', '2. Actualizar datos ', '3. Buscar pais por nombre ', '4. Filtrar paises ', '5. Ordenar paises ', '6. Mostrar estadisticas ', '7. Salir '],
     style = estilo,
     pointer = '▶'
