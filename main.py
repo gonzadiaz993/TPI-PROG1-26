@@ -5,16 +5,10 @@ while True:
     estilo = Style([
         ('instruction','hidden'),
         ('qmark','hidden'),
-        ('highlighted','bg:green fg:black'),
-        ('pointer','fg:green bold')
+        ('highlighted','bg:green fg:yellow'),
+        ('pointer','fg:green bold'),
+        ('question','fg:green bold')
     ])
-    '''
-    ('qmark', 'fg:#00ff00'),
-    ('question', 'fg:#00ff00 bold'),
-    # 'bg:#00ff00' crea el bloque verde, 'fg:#000000' hace la letra negra para que contraste
-    ('highlighted', 'bg:#00ff00 fg:#000000 bold'), 
-    ('pointer', 'fg:#00ff00 blink'),     # Puntero verde (algunas terminales soportan el parpadeo 'blink')
-    ('answer', 'fg:#00ff00 underline'),'''
     opcion = questionary.select(
     
     message='============== MENU ================\n',
@@ -23,19 +17,19 @@ while True:
     pointer = '▶'
 ).ask()
     match opcion:
-        case '1. Agregar país':
+        case '1. Agregar país ':
             agregar_pais(paises)
-        case '2. Actualizar datos':
+        case '2. Actualizar datos ':
             modificar_datos(paises)
-        case '3. Buscar pais por nombre':
+        case '3. Buscar pais por nombre ':
             buscar_pais(paises)
-        case '4. Filtrar paises':
+        case '4. Filtrar paises ':
             filtrar_paises(paises)
-        case '5. Ordenar paises':
+        case '5. Ordenar paises ':
             ordenar_paises(paises)
-        case '6. Mostrar estadisticas':
+        case '6. Mostrar estadisticas ':
             estadisticas(paises)
-        case '7. Salir':
+        case '7. Salir ':
             limpiar_consola()
             print("Fin del programa. Hasta luego.")
             press_continuar()
