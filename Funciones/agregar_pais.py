@@ -2,50 +2,72 @@ import csv
 from Funciones.excepciones import *
 from Funciones.guardar_archivo import *
 from Funciones.en_consola import *
+from Funciones.limpiar_consola import *
 def agregar_pais(paises):
-    try:
-        lista_vacia(paises)
-    except ListaVacia as e:
-        print(f'Error. {e}')
+    print("\n--- Agregar Nuevo País (Escriba 'salir' en nombre para terminar) ---") 
     while True:
-        print(f'\n--- Agregar Nuevo País (Escriba {Fore.RED}salir{Fore.RESET} en nombre para terminar) ---')
+        entrada = input("Ingrese el nombre del país: ").strip()  
+        if entrada.lower() == 'salir':
+            return paises
+        if entrada == "":
+            print("El nombre del país no puede estar vacío.")
+            continue
+        if not entrada.replace(" ", "").isalpha():
+            print("Error: El nombre del país solo puede contener letras y espacios.")
+            continue
+        nombre_pais = entrada.title()
+        
+        # Verificamos si el nombre ya existe en la lista de diccionarios devuelve un booleano
+        #any devuelve true si almenos uno de los elemtnos es true.Dentro de el se compara si un dicionario para no romper el programa. 
+        existe = any(isinstance(p, dict) and p.get('nombre') == nombre_pais for p in paises)
+        
+        if existe:
+            print(f"El país '{nombre_pais}' ya se encuentra en la lista.")
+            continue
+
+        nombre = nombre_pais
+        break
+    
+    while True:
         try:
-            nombre = ""
-            while not nombre:
-                try:
-                    entrada = input("Ingrese el nombre del país: ").strip()
-                    if entrada.lower() == 'salir':
-                        return paises
-                    nombre_pais = entrada.capitalize()
-                    esta_repetido(paises,nombre_pais)
-                    nombre = nombre_pais
-                except DatoRepetido as e:
-                    print(f'Error. {e}')
-            poblacion = -1
-            while poblacion < 0:
-                poblacion = int(input(f"Ingrese la población de {nombre}: "))
-                if poblacion < 0:
-                    print("La población debe ser un número positivo.")
-
-            superficie = -1
-            while superficie < 0:
-                superficie = int(input(f"Ingrese la superficie de {nombre} (km²): "))
-                if superficie < 0:
-                    print("La superficie debe ser un número positivo.")
-
-            continente = ""
-            while not continente:
-                continente = input(f"Ingrese el continente de {nombre}: ").strip().capitalize()
-                if not continente:
-                    print("El continente no puede estar vacío.")
-            nuevo_pais = {
-                "nombre": nombre,
-                "poblacion": poblacion,
-                "superficie": superficie,
-                "continente": continente 
-            }
-            paises.append(nuevo_pais)
-            guardar_archivo(paises)
-            print(f"\n¡{nombre} se ha registrado correctamente!")
+            poblacion = int(input(f"Ingrese la población de {nombre}: "))
+            if poblacion <= 0:
+                print("La población debe ser un número positivo y mayor a 0.")
+            else:
+                print("Poblacion añadida con exito.")
+                break
+            
         except ValueError:
-            print("\nError: Ingrese solo números enteros para población y superficie.")
+            print("La poblacion debe ser un numero.")
+    while True:
+        try:
+            superficie = int(input(f"Ingrese la superficie de {nombre} (km²): "))
+            if superficie <= 0:
+                print("La superficie debe ser un número positivo y mayor a 0.")
+            else:
+                print("Superficie añadida con exito.")
+                break
+        except ValueError:
+            print("No puede contener letras.")
+    while True:
+        continente = input(f"Ingrese el continente de {nombre}: ").strip().capitalize()
+        
+        if continente == "":
+            print("El continente no puede estar vacío.")
+        
+        elif not continente.isalpha(): 
+            print("Error: El continente no puede contener números ni caracteres especiales.")
+        else:
+            print("Continente añadido con éxito.")
+            break
+    nuevo_pais = {
+        "nombre": nombre,
+        "poblacion": poblacion,
+        "superficie": superficie,
+        "continente": continente 
+    }
+    paises.append(nuevo_pais)
+    guardar_archivo(paises)
+    limpiar_consola()
+    continuar()
+    return paises
