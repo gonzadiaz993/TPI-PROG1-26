@@ -31,13 +31,18 @@ def buscar_pais(lista):
                 if pais_buscar == paises[:len(pais_buscar)]:
                     if nombre_largo < len(paises):
                         nombre_largo = len(paises)
-                    corte = paises.lower().find(pais_buscar.lower())
-                    sin_corte = len(pais_buscar)
-                    parcial = paises[corte:corte + sin_corte]
+                    corte = paises.lower().find(pais_buscar.lower())# Aca empieza el fragmento buscado
+                    sin_corte = len(pais_buscar) # El largo total del fragmento/total ingresado
+                    parcial = paises[:corte + sin_corte]
+                    # parcial -- [: 0 + sin_corte] -- Toma de 0 hasta el fragmento/total ingresado
                     total = paises[corte + sin_corte:]
+                    # total -- Toma todo lo que quede de resto si es que hay
                     coloreado = f'{Fore.GREEN}{parcial}{Fore.RESET}{total}'
+                    # colorado -- Fusiona los datos ingresador anteriormente
                     espacios_relleno = " " * max(0, nombre_largo - len(paises))
+                    # espacios_relleno -- Calcula cuantos espacios en blanco le tiene que agregar al ancho de fila
                     dato_total = f'{coloreado}{espacios_relleno}'
+                    # dato_total -- Junta el nombre ya coloreado con los espacios de relleno
                     print(f"{dato_total:<15} | {i['poblacion']:<15} | {i['superficie']:<12} | {i['continente']:<6}")
                     encontrado = True
             if not encontrado:
