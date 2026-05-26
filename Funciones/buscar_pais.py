@@ -15,11 +15,30 @@ def buscar_pais(lista):
         encontrado = False
         with open(PAISES,'r',newline='',encoding='utf-8') as archivo:
             lector = csv.DictReader(archivo)
-            print(f'\n{'Paises':<15} | {'Poblacion':<15} | {'Superficie':<12} | {'Continente':<6}')
+            nombre_largo = 0
+            for x in lector:
+                paises = x['nombre']
+                if pais_buscar == paises[:len(pais_buscar)]:
+                    if nombre_largo < len(paises):
+                        nombre_largo = len(paises)
+            print(f'\n{'Paises':<{nombre_largo}} | {'Poblacion':<15} | {'Superficie':<12} | {'Continente':<6}')
             print('-'*80)
+            archivo.seek(0)
+            lector = csv.DictReader(archivo)
+            nombre_largo =0
             for i in lector:
-                if pais_buscar == i['nombre'] or (pais_buscar in i['nombre']):
-                    print(f"{i['nombre']:<15} | {i['poblacion']:<15} | {i['superficie']:<12} | {i['continente']:<6}")
+                paises = i['nombre']
+                if pais_buscar == paises[:len(pais_buscar)]:
+                    if nombre_largo < len(paises):
+                        nombre_largo = len(paises)
+                    corte = paises.lower().find(pais_buscar.lower())
+                    sin_corte = len(pais_buscar)
+                    parcial = paises[corte:corte + sin_corte]
+                    total = paises[corte + sin_corte:]
+                    coloreado = f'{Fore.GREEN}{parcial}{Fore.RESET}{total}'
+                    espacios_relleno = " " * max(0, nombre_largo - len(paises))
+                    dato_total = f'{coloreado}{espacios_relleno}'
+                    print(f"{dato_total:<15} | {i['poblacion']:<15} | {i['superficie']:<12} | {i['continente']:<6}")
                     encontrado = True
             if not encontrado:
                 print(f'El pais "{Fore.RED}{pais_buscar}{Fore.RESET}" no se ha encontrado')
