@@ -1,3 +1,4 @@
+import csv
 def guardar_archivo(lista):
     try:
         with open('paises.csv', 'w', newline='', encoding='utf-8') as archivo:

@@ -2,7 +2,6 @@ import csv
 from Funciones.excepciones import *
 from Funciones.guardar_archivo import *
 from Funciones.en_consola import *
-from Funciones.limpiar_consola import *
 def agregar_pais(paises):
     print("\n--- Agregar Nuevo País (Escriba 'salir' en nombre para terminar) ---") 
     while True:
@@ -69,5 +68,5 @@ def agregar_pais(paises):
     paises.append(nuevo_pais)
     guardar_archivo(paises)
     limpiar_consola()
-    continuar()
+    press_continuar()
     return paises

@@ -1,44 +1,50 @@
 import csv
+from Funciones.__fcn__ import *
 def filtrar_paises(lista):
     america =[]
     while True:
-        print("""
-===Menu para filtrar paises por: ===
-1) Continente.
-2) Rango de poblacion.
-3) Rango de superficie.
-4) Salir.\n""")
-        opcion = input("Elija la opcion deseada: ")
+        estilo = Style([
+            ('instruction','hidden'),
+            ('qmark','hidden'),
+            ('highlighted','bg:green fg:yellow'),
+            ('pointer','fg:green bold'),
+            ('question','fg:green bold')
+        ])
+        opcion = questionary.select(
+            message='=== Menu para filtrar paises por ===',
+            choices=['Continentes ','Poblacion ','Superficie ','Volver al Menu Principal '],
+            style = estilo,
+            pointer = '▶'
+        ).ask()
         match opcion:
-            case "1":
+            case "Continentes ":
                 filtrar_continentes(lista)
-            case "2":
+            case "Poblacion ":
                 rango_poblacion(lista)
-            case "3":
+            case "Superficie ":
                 rango_superficie(lista)
-            case "4":
+            case "Volver al Menu Principal ":
                 print("Volviendo al menu principal.")
-                break
-            case _:
-                print("Error. Ingrese una opcion valida.")
+                return
+
 def filtrar_continentes(lista):
     while True:
-        print("""
-======================================
-          MENÚ DE CONTINENTES          
-======================================
-1. América.
-2. Europa.
-3. África.
-4. Asia.
-5. Oceanía.
-6. Antártida.
-7. Salir del programa.
-======================================
-""")
-        opcion = input("Elija una opcion: ").strip()
+        estilo = Style([
+            ('instruction','hidden'),
+            ('qmark','hidden'),
+            ('highlighted','bg:green fg:yellow'),
+            ('pointer','fg:green bold'),
+            ('question','fg:green bold')
+        ])
+        opcion = questionary.select(
+            message='\n===========================\n   MENÚ DE CONTINENTES \n===========================',
+            choices=['América ','Eruopa ','África ','Asaia ','Oceanía ','Antártida ','Volver '],
+            style = estilo,
+            pointer = '▶'
+        ).ask()
+        
         match opcion:
-            case "1":
+            case 'América ':
                 america =[]
                 print("Paises en el continente Americano.")
                 for pais in lista:
@@ -50,7 +56,7 @@ def filtrar_continentes(lista):
                     print("-----------------------------------------")
                     print(f"- {pais} - continente: América. ")
 
-            case "2":
+            case 'Eruopa ':
                 europa =[]
                 print("Paises en el continente Europeo.")
                 for pais in lista:
@@ -61,7 +67,7 @@ def filtrar_continentes(lista):
                 for pais in europa:
                     print("-----------------------------------------")
                     print(f"- {pais} - continente: Europeo. ")
-            case "3":
+            case 'África ':
                 africa =[]
                 print("Paises en el continente Africano.")
                 for pais in lista:
@@ -72,7 +78,7 @@ def filtrar_continentes(lista):
                 for pais in africa:
                     print("-----------------------------------------")
                     print(f"- {pais} - continente: Africano.")
-            case "4":
+            case 'Asaia ':
                 asia =[]
                 print("Paises en el continente Asiatico.")
                 for pais in lista:
@@ -83,7 +89,7 @@ def filtrar_continentes(lista):
                 for pais in asia:
                     print("-----------------------------------------")
                     print(f"- {pais} - continente: Asiatico.")
-            case "5":
+            case 'Oceanía ':
                 oceania =[]
                 print("Paises en el continente Océanico.")
                 for pais in lista:
@@ -94,11 +100,11 @@ def filtrar_continentes(lista):
                 for pais in oceania:
                     print("-----------------------------------------")
                     print(f"- {pais} - continente: Océanico.")
-            case "6":
+            case 'Antártida ':
                 print("la Antártida no contiene países." \
                 " Es un continente, pero a diferencia de cualquier otro lugar de la Tierra, " \
                 "no pertenece a ningún Estado y no tiene una población nativa ni un gobierno propio.")
-            case "7":
+            case 'Volver ':
                 print("Volviendo al menu continentes.")
                 break
             case _:

@@ -1,5 +1,6 @@
 import csv
 from Funciones.en_consola import *
+from Funciones.__fcn__ import *
 PAISES = 'paises.csv'
 def por_nombre(fila):
     return fila[0]
@@ -8,7 +9,9 @@ def caso_1():
     estilo = Style([
         ('instruction','hidden'),
         ('qmark','hidden'),
-        ('highlighted','fg:red bold')
+        ('highlighted','bg:green fg:yellow'),
+        ('pointer','fg:green bold'),
+        ('question','fg:green bold')
     ])
     opcion = questionary.select(
         message='En que orden lo quiere mostrar: ',
@@ -17,6 +20,7 @@ def caso_1():
             '. Z - A',
             '. Volver'
         ],
+        pointer = '▶',
         style=estilo
     ).ask()
     if opcion == '. Volver':
@@ -38,7 +42,7 @@ def caso_1():
             print(f'\n{Fore.YELLOW}Paises{Fore.RESET:<28}{Fore.RED}{az}{Fore.RESET} | {"Poblacion":<15} | {"Superficie":<12} | {"Continentes":<6}')
             print('-'*80)
             for x in sorted(usar, reverse = volt):
-                print(f"{Fore.YELLOW}{x[0]:<32}{Fore.RESET} | {x[1]:<15} | {x[2]:<12} | {x[3]:<6}")
+                print(f"{Fore.YELLOW}{x[0]:<32}{Fore.RESET} | {int(x[1]):<15,} | {int(x[2]):<12,} | {x[3]:<6}")
         except UnboundLocalError:
             print('\n Saliendo al menu principal \n')
         else:
@@ -50,7 +54,9 @@ def caso_2():
     estilo = Style([
         ('instruction','hidden'),
         ('qmark','hidden'),
-        ('highlighted','fg:red bold')
+        ('highlighted','bg:green fg:yellow'),
+        ('pointer','fg:green bold'),
+        ('question','fg:green bold')
     ])
     opcion = questionary.select(
         message='En que orden lo quiere mostrar: ',
@@ -80,7 +86,7 @@ def caso_2():
             print(f'\n{'Paises':<32} | {Fore.YELLOW}{'Poblacion'}{Fore.RESET:<15}{Fore.RED}{az}{Fore.RESET} | {'Superficie':<12} | {'Continentes':<6}')
             print('-'*100)
             for x in sorted(usar, reverse=volt):
-                print(f"{x[1]:<32} | {Fore.YELLOW}{x[0]:<32}{Fore.RESET} | {x[2]:<12} | {x[3]:<6}")
+                print(f"{x[1]:<32} | {Fore.YELLOW}{int(x[0]):<32,}{Fore.RESET} | {int(x[2]):<12,} | {x[3]:<6}")
         except UnboundLocalError:
             print('\n Saliendo al menu principal \n')
         else:
@@ -92,7 +98,9 @@ def caso_3():
     estilo = Style([
         ('instruction','hidden'),
         ('qmark','hidden'),
-        ('highlighted','fg:red bold')
+        ('highlighted','bg:green fg:yellow'),
+        ('pointer','fg:green bold'),
+        ('question','fg:green bold')
     ])
     opcion = questionary.select(
         message='Como quiere ordenar el Tamaño de la Superficie: ',
@@ -118,7 +126,7 @@ def caso_3():
             print(f'\n{'Paises':<32} | {'Poblacion':<15} | {Fore.YELLOW}{'Superficie':<12}{Fore.RESET}{Fore.RED}{az}{Fore.RESET} | {'Continentes':<6}')
             print('-'*100)
             for x in sorted(usar, reverse=volt):
-                print(f"{x[1]:<32} | {x[2]:<15} | {Fore.YELLOW}{x[0]:<25}{Fore.RESET} | {x[3]:<6}")
+                print(f"{x[1]:<32} | {int(x[2]):<15,} | {Fore.YELLOW}{int(x[0]):<25,}{Fore.RESET} | {x[3]:<6}")
         except UnboundLocalError:
             print('\n Saliendo al menu principal \n')
         else:
@@ -130,7 +138,9 @@ def caso_4():
     estilo = Style([
         ('instruction','hidden'),
         ('qmark','hidden'),
-        ('highlighted','fg:red bold')
+        ('highlighted','bg:green fg:yellow'),
+        ('pointer','fg:green bold'),
+        ('question','fg:green bold')
     ])
     opcion = questionary.select(
         message='En que orden lo quiere mostrar: ',
@@ -160,7 +170,7 @@ def caso_4():
             print(f'\n{'Paises':<32} | {'Poblacion':<15} | {'Superficie':<12} | {Fore.YELLOW}{'Continentes  ':<8}{Fore.RESET}{Fore.RED}{az}{Fore.RESET}')
             print('-'*100)
             for x in sorted(usar,key=por_nombre, reverse = volt):
-                print(f"{x[3]:<32} | {x[1]:<15} | {x[2]:<12} | {Fore.YELLOW}{x[0]:<20}{Fore.RESET}")
+                print(f"{x[3]:<32} | {int(x[1]):<15,} | {int(x[2]):<12,} | {Fore.YELLOW}{x[0]:<20}{Fore.RESET}")
         except UnboundLocalError:
             print('\n Saliendo al menu principal \n')
         else:
@@ -171,9 +181,11 @@ def caso_4():
 def ordenar_paises(lista):
     while True:
         estilo = Style([
-            ('instruction','hidden'),
-            ('qmark','hidden'),
-            ('highlighted','fg:yellow bold')
+        ('instruction','hidden'),
+        ('qmark','hidden'),
+        ('highlighted','bg:green fg:yellow'),
+        ('pointer','fg:green bold'),
+        ('question','fg:green bold')
         ])
         opcion = questionary.select(
             message='Como quiere ordenar los datos',
