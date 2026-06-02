@@ -29,8 +29,6 @@ def buscar_pais(lista):
             for i in lector:
                 paises = i['nombre']
                 if pais_buscar == paises[:len(pais_buscar)]:
-                    if nombre_largo < len(paises):
-                        nombre_largo = len(paises)
                     corte = paises.lower().find(pais_buscar.lower())# Aca empieza el fragmento buscado
                     sin_corte = len(pais_buscar) # El largo total del fragmento/total ingresado
                     parcial = paises[:corte + sin_corte]
