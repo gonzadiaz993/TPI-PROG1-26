@@ -1,18 +1,26 @@
-import csv
-from Funciones.guardar_archivo import* 
+from questionary import Style
+import questionary
+
 def modificar_datos(lista):
     for pais in lista:
-        print(f"País: {pais['nombre']} | Población: {pais['poblacion'] } | Superficie: {pais['superficie'] } | Continente: {pais['continente'] }")
-        print("========================================================================================")
-    print("""
-    Menu para actulizar poblacion, superficie de un pais de la lista.
-    1) Actualizar poblacion.
-    2) Actualizar superficie.
-    3) Salir.\n""")
+        print(f"País: {pais['nombre']:<31} | Población: {pais['poblacion']:<15} | Superficie: {pais['superficie']:<12} | Continente: {pais['continente']:<6}")
+        print("="*120)
     while True:
-        opcion = input("Elija una opcion del menu: ").strip()
+        estilo = Style([
+            ('instruction','hidden'),
+            ('qmark','hidden'),
+            ('highlighted','bg:green fg:yellow'),
+            ('pointer','fg:green bold'),
+            ('question','fg:green bold')
+        ])
+        opcion = questionary.select(
+        message='>>>>>>>> MENU <<<<<<<<\n',
+        choices=['1. Actualizar poblacion. ', '2. Actualizar superficie. ', '3. Salir '],
+        style = estilo,
+        pointer = '▶'
+    ).ask()
         match opcion:
-            case "1":
+            case "1. Actualizar poblacion. ":
                 nombre_pais = input("Elija el pais que desea actualizar: ").strip().capitalize()
                 for pais in lista:
                     if pais["nombre"] == nombre_pais:
@@ -29,7 +37,7 @@ def modificar_datos(lista):
                     else:
                         print("El pais no fue encontrado.")
                         break
-            case "2":
+            case "2. Actualizar superficie. ":
                 nombre_pais = input("Elija el pais que desea actualizar: ").strip().capitalize()
                 for pais in lista:
                     if pais["nombre"] == nombre_pais:
@@ -43,8 +51,6 @@ def modificar_datos(lista):
                                 break
                             except ValueError:
                                 print("Error solo numeros.")
-            case "3":
+            case "3. Salir ":
                 print("Finalizando. Volviendo al menu principal.")
                 break
-            case _:
-                print("Opcion incorrecta intente nuevamente.")
