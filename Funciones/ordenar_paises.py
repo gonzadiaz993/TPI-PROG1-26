@@ -2,9 +2,6 @@ import csv
 from Funciones.en_consola import *
 from Funciones.__fcn__ import *
 PAISES = 'paises.csv'
-def por_nombre(fila):
-    return fila[0]
-
 def caso_1():
     estilo = Style([
         ('instruction','hidden'),
@@ -169,7 +166,7 @@ def caso_4():
         try:
             print(f'\n{'Paises':<32} | {'Poblacion':<15} | {'Superficie':<12} | {Fore.YELLOW}{'Continentes  ':<8}{Fore.RESET}{Fore.RED}{az}{Fore.RESET}')
             print('-'*100)
-            for x in sorted(usar,key=por_nombre, reverse = volt):
+            for x in sorted(usar, reverse = volt):
                 print(f"{x[3]:<32} | {int(x[1]):<15,} | {int(x[2]):<12,} | {Fore.YELLOW}{x[0]:<20}{Fore.RESET}")
         except UnboundLocalError:
             print('\n Saliendo al menu principal \n')
