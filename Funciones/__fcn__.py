@@ -7,3 +7,6 @@ from Funciones.guardar_archivo import *
 from Funciones.modificar_datos import *
 from Funciones.filtar_pais import *
 from Funciones.estadisticas import *
+from Funciones.excepciones import *
+from Funciones.en_consola import *
+from Funciones.primera_carga import *
