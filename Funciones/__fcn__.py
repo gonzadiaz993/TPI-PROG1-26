@@ -9,3 +9,4 @@ from Funciones.filtar_pais import *
 from Funciones.estadisticas import *
 from Funciones.excepciones import *
 from Funciones.en_consola import *
+from Funciones.primera_carga import *
