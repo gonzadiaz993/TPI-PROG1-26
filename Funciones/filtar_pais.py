@@ -1,4 +1,5 @@
 import csv
+import questionary
 from Funciones.__fcn__ import *
 def filtrar_paises(lista):
     america =[]
@@ -38,7 +39,7 @@ def filtrar_continentes(lista):
         ])
         opcion = questionary.select(
             message='\n===========================\n   MENÚ DE CONTINENTES \n===========================',
-            choices=['América ','Eruopa ','África ','Asaia ','Oceanía ','Antártida ','Volver '],
+            choices=['América ','Eruopa ','África ','Asia ','Oceanía ','Antártida ','Volver '],
             style = estilo,
             pointer = '▶'
         ).ask()
@@ -78,7 +79,7 @@ def filtrar_continentes(lista):
                 for pais in africa:
                     print("-----------------------------------------")
                     print(f"- {pais} - continente: Africano.")
-            case 'Asaia ':
+            case 'Asia ':
                 asia =[]
                 print("Paises en el continente Asiatico.")
                 for pais in lista:
@@ -116,7 +117,7 @@ def rango_poblacion(lista):
             pob_max = int(input("Ingrese la población MÁXIMA: ").strip())
             
             if pob_min > pob_max:
-                print("❌ Error: La población mínima no puede ser mayor que la máxima.")
+                print("Error: La población mínima no puede ser mayor que la máxima.")
                 continue
 
         except ValueError:
@@ -145,7 +146,7 @@ def rango_superficie(lista):
             sup_max = int(input("Ingrese la superficie MÁXIMA: ").strip())
             
             if sup_min > sup_max:
-                print("❌ Error: La superficie mínima no puede ser mayor que la máxima.")
+                print("Error: La superficie mínima no puede ser mayor que la máxima.")
                 continue
 
         except ValueError:

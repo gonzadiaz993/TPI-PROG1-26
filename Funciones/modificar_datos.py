@@ -1,4 +1,5 @@
 import csv
+from Funciones.guardar_archivo import *
 def modificar_datos(lista):
     for pais in lista:
         print(f"País: {pais['nombre']} | Población: {pais['poblacion'] } | Superficie: {pais['superficie'] } | Continente: {pais['continente'] }")
