@@ -49,7 +49,7 @@ def filtrar_continentes(lista):
                 america =[]
                 print("Paises en el continente Americano.")
                 for pais in lista:
-                    if pais["continente"] == "América":
+                    if pais["continente"] == "America":
                         america.append(pais["nombre"])
                     else:
                         continue
@@ -72,7 +72,7 @@ def filtrar_continentes(lista):
                 africa =[]
                 print("Paises en el continente Africano.")
                 for pais in lista:
-                    if pais["continente"] == "África":
+                    if pais["continente"] == "Africa":
                         africa.append(pais["nombre"])
                     else:
                         continue
@@ -94,7 +94,7 @@ def filtrar_continentes(lista):
                 oceania =[]
                 print("Paises en el continente Océanico.")
                 for pais in lista:
-                    if pais["continente"] == "Oceanía":
+                    if pais["continente"] == "Oceania":
                         oceania.append(pais["nombre"])
                     else:
                         continue
@@ -113,25 +113,33 @@ def filtrar_continentes(lista):
 def rango_poblacion(lista):
     while True:
         try:
+            # Solicitamos los datos al usuario, limpiamos espacios y los pasamos a entero
             pob_min = int(input("Ingrese la población MÍNIMA: ").strip())
             pob_max = int(input("Ingrese la población MÁXIMA: ").strip())
             
+            # Validación de números negativos
+            if pob_min < 0 or pob_max < 0:
+                print("Error: La población no puede ser un número negativo.")
+                continue
+            # Valida la lógica del rango (el mínimo no puede superar al máximo)
             if pob_min > pob_max:
                 print("Error: La población mínima no puede ser mayor que la máxima.")
                 continue
-
+        # Si el usuario ingresó letras, puntos, comas o dejó vacío, salta este error
         except ValueError:
-            
             print("Error: Debes ingresar únicamente números enteros (sin puntos, comas ni letras).")
             continue
 
         print(f"\nResultados para población entre {pob_min:,} y {pob_max:,}:")
         print("--------------------------------------------------")
-        
+        # Iniciamos un contador para saber si algún país entró en el rango
         contador_encontrados = 0
         for pais in lista:
-            if pob_min <= pais["poblacion"] <= pob_max:
-                print(f"- {pais['nombre']}: {pais['poblacion']:,} habitantes.")
+            # Convertimos a int() el valor que viene del CSV/Diccionario
+            poblacion_actual = int(pais["poblacion"])
+            
+            if pob_min <= poblacion_actual <= pob_max:
+                print(f"- {pais['nombre']}: {poblacion_actual:,} habitantes.")
                 contador_encontrados += 1
         
         if contador_encontrados == 0:
@@ -142,28 +150,37 @@ def rango_poblacion(lista):
 def rango_superficie(lista):
     while True:
         try:
-            sup_min = int(input("Ingrese la superficie MÍNIMA: ").strip())
-            sup_max = int(input("Ingrese la superficie MÁXIMA: ").strip())
+            # Solicitamos los rangos, limpiamos espacios y los pasamos a entero
+            sup_min = int(input("Ingrese la superficie MÍNIMA (km²): ").strip())
+            sup_max = int(input("Ingrese la superficie MÁXIMA (km²): ").strip())
             
+            # Evitamos que pongan superficies negativas
+            if sup_min < 0 or sup_max < 0:
+                print("Error: La superficie no puede ser un número negativo.")
+                continue # Reinicia el "while" para volver a pedir los datos
+            
+            # Validamos la lógica matemática del rango
             if sup_min > sup_max:
                 print("Error: La superficie mínima no puede ser mayor que la máxima.")
                 continue
 
         except ValueError:
-            
             print("Error: Debes ingresar únicamente números enteros (sin puntos, comas ni letras).")
             continue
-
-        print(f"\nResultados para superficie entre {sup_min:,} y {sup_max:,}:")
-        print("--------------------------------------------------")
-        
+        print(f"\nResultados para superficie entre {sup_min:,} y {sup_max:,} km²:")
+        print("--------------------------------------------------")     
+        # Inicializamos el contador de coincidencias
         contador_encontrados = 0
         for pais in lista:
-            if sup_min <= pais["superficie"] <= sup_max:
-                print(f"- {pais['nombre']}: {pais['superficie']:,}(km²).")
+            #Convertimos el string del CSV a entero antes de comparar
+            superficie_actual = int(pais["superficie"])
+            
+            # Evaluamos si el país entra en el rango solicitado
+            if sup_min <= superficie_actual <= sup_max:
+                print(f"- {pais['nombre']}: {superficie_actual:,} km².")
                 contador_encontrados += 1
-        
         if contador_encontrados == 0:
-            print("No se encontraron países en ese rango de superfcie.")
+            print("No se encontraron países en ese rango de superficie.")
+            
         print("--------------------------------------------------")
-        break
+        break # Rompemos el bucle principal porque la consulta terminó con éxito

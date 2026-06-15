@@ -7,7 +7,7 @@ def agregar_pais(paises):
     while True:
         # 1. Entrada y validación del Nombre
         while True:
-            entrada = input("Ingrese el nombre del país: ").strip()
+            entrada = input("Ingrese el nombre del país o salir para finalizar.: ").strip()
             if entrada.lower() == 'salir':
                 return paises # Salimos de la funcion
             # Bloque try y except para la validacion de las entradas 
@@ -23,48 +23,48 @@ def agregar_pais(paises):
             except error_paisexiste as e:
                 print(e)
         
-            while True:
-                try:
-                    poblacion = int(input(f"Ingrese la población de {nombre}: "))
-                    validar_entero(poblacion)
-                    print("Poblacion añadida.")
-                    break
-                except ValueError:
-                    print("Solo se permiten numeros enteros.")
-                except error_numero_negativo as e:
-                    print(e)
-                    
-            while True:
-                try:
-                    superficie = int(input(f"Ingrese la superficie de {nombre} (km²): "))
-                    validar_entero(superficie)
-                    print("Superficie añadida.")
-                    break
-                except ValueError:
-                    print("Solo se permiten numeros enteros.")
-                except error_numero_negativo as e:
-                    print(e)
-            while True:
-                try:
-                    continente = input(f"Ingrese el continente de {nombre}: ").strip().capitalize()
-                    validar_continente(continente)
-                    print("Continente añadido.")
-                    break
-                except error_entradavacia as e:
-                    print(e)
-                except error_sololetras as e:
-                    print (e)
-            nuevo_pais = {
-                "nombre": nombre,
-                "poblacion": poblacion,
-                "superficie": superficie,
-                "continente": continente 
-            }
-            #añade pais a la lista guarda el nuevo pais y vuelve a otro nombre hasta ingresar "salir".
-            paises.append(nuevo_pais)
-            guardar_archivo(paises)
-            press_continuar()
-            limpiar_consola()
+        while True:
+            try:
+                poblacion = int(input(f"Ingrese la población de {nombre}: "))
+                validar_entero(poblacion)
+                print("Poblacion añadida.")
+                break
+            except ValueError:
+                print("Solo se permiten numeros enteros.")
+            except error_numero_negativo as e:
+                print(e)
+                
+        while True:
+            try:
+                superficie = int(input(f"Ingrese la superficie de {nombre} (km²): "))
+                validar_entero(superficie)
+                print("Superficie añadida.")
+                break
+            except ValueError:
+                print("Solo se permiten numeros enteros.")
+            except error_numero_negativo as e:
+                print(e)
+        while True:
+            try:
+                continente = input(f"Ingrese el continente de {nombre}: ").strip().capitalize()
+                validar_continente(continente)
+                print("Continente añadido.")
+                break
+            except error_entradavacia as e:
+                print(e)
+            except error_sololetras as e:
+                print (e)
+        nuevo_pais = {
+            "nombre": nombre,
+            "poblacion": poblacion,
+            "superficie": superficie,
+            "continente": continente 
+        }
+        #añade pais a la lista guarda el nuevo pais y vuelve a otro nombre hasta ingresar "salir".
+        paises.append(nuevo_pais)
+        guardar_archivo(paises)
+        press_continuar()
+        limpiar_consola()
 # fuciones de validacion            
 def validar_pais(pais,lista):
     if pais == "":
