@@ -34,6 +34,7 @@ def modificar_datos(lista):
                                 validar_entero(actualizar_pob)
                                 pais["poblacion"] = actualizar_pob
                                 print("Poblacion actualizada.")
+                                print(f"País: {pais['nombre']} | Población: {pais['poblacion'] }")
                                 guardar_archivo(lista)
                                 break
                             except ValueError:
@@ -55,6 +56,7 @@ def modificar_datos(lista):
                                 validar_entero(actualizar_sup)
                                 pais["superficie"] = actualizar_sup
                                 print("Superficie actualizada.")
+                                print(f"País: {pais['nombre']} | Superficie: {pais['superficie'] }")
                                 guardar_archivo(lista)
                                 break
                             except ValueError:
