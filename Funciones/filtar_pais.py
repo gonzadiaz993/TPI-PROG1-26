@@ -102,9 +102,11 @@ def filtrar_continentes(lista):
                     print("-----------------------------------------")
                     print(f"- {pais} - continente: Océanico.")
             case 'Antártida ':
-                print("la Antártida no contiene países." \
-                " Es un continente, pero a diferencia de cualquier otro lugar de la Tierra, " \
-                "no pertenece a ningún Estado y no tiene una población nativa ni un gobierno propio.")
+                print("""
+La Antártida no contiene países.
+Es un continente, pero a diferencia de cualquier otro lugar de la Tierra,
+no pertenece a ningún Estado y no tiene una población nativa ni un gobierno propio.
+                      """)
             case 'Volver ':
                 print("Volviendo al menu continentes.")
                 break
